@@ -1,106 +1,153 @@
 @import "tailwindcss";
 
+/* ----------------------------------
+   Tailwind Theme Tokens
+---------------------------------- */
 @theme {
   --font-inter: var(--font-inter);
   --font-fira-code: var(--font-fira-code);
-  
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --color-card: var(--card);
   --color-card-border: var(--card-border);
-  
+
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
-  
+
   --color-cyan: var(--cyan);
   --color-violet: var(--violet);
   --color-lime: var(--lime);
-  
+
   --color-surface: var(--surface);
   --color-surface-highlight: var(--surface-highlight);
   --color-foreground-dim: var(--foreground-dim);
-  
+
   --animate-spin-slow: spin 20s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-scanline: scanline 2s linear infinite;
 }
 
-/* 
-  High-Tech Theme System 
-  Using HSL for easier programmatic manipulation if needed later.
-*/
+/* ----------------------------------
+   LIGHT MODE — ENGINEERING / PORTFOLIO
+---------------------------------- */
 :root {
-  /* LIGHT MODE (Clean, Lab-like, Engineering) */
-  --background: #f8fafc; /* Slate 50 */
-  --foreground: #0f172a; /* Slate 900 */
-  
+  /* Base */
+  --background: #fcfbfe;          /* Clean, crisp off-white with hint of violet */
+  --foreground: #0f172a;          /* Deep Slate for high contrast */
+
+  /* Cards */
   --card: #ffffff;
-  --card-border: #e2e8f0; /* Slate 200 */
-  
-  --primary: #2563eb; /* Blue 600 - Reliable */
-  --secondary: #7c3aed; /* Violet 600 - Creative */
-  --accent: #0ea5e9; /* Sky 500 */
-  
-  --cyan: #0284c7; /* Sky 600 (readable on light) */
-  --violet: #7c3aed;
-  --lime: #65a30d; /* Lime 600 */
-  
-  --surface: #f1f5f9; /* Slate 100 */
-  --surface-highlight: #e2e8f0; /* Slate 200 */
-  --foreground-dim: #64748b; /* Slate 500 */
+  --card-border: #e2e8f0;         /* Soft, clean border */
+
+  /* Brand */
+  --primary: #5F4B8B;             /* Ultra Violet */
+  --secondary: #7a6aa6;           /* Softer violet */
+  --accent: #5F4B8B;
+
+  /* Semantic aliases */
+  --cyan: #5F4B8B;                
+  --violet: #5F4B8B;
+  --lime: #16a34a;                /* More vibrant success in light mode */
+
+  /* Surfaces */
+  --surface: #f8f7ff;             
+  --surface-highlight: #f1f0fb;   
+
+  /* Text hierarchy */
+  --foreground-dim: #475569;      /* Slate-600 for secondary text */
+
+  /* RGB for shadows */
+  --primary-rgb: 95, 75, 139;
+  --cyan-glow: rgba(95, 75, 139, 0.3);
 }
 
+/* ----------------------------------
+   DARK MODE — CYBER / DEEP SPACE
+---------------------------------- */
 .dark {
-  /* DARK MODE (Cyber, Deep Space, Neon) */
-  --background: #05060a; /* Deep Black */
-  --foreground: #f8fafc; /* Slate 50 */
-  
-  --card: #0a0a0f; /* Carbon */
-  --card-border: #1e293b; /* Slate 800 */
-  
-  --primary: #00f0ff; /* Electric Cyan */
-  --secondary: #bc13fe; /* Neon Violet */
-  --accent: #00f0ff;
-  
-  --cyan: #00f0ff;
-  --violet: #bc13fe;
-  --lime: #ccff00;
-  
+  --background: #05060a;
+  --foreground: white;
+
+  --card: #0a0a0f;
+  --card-border: #1e293b;
+
+  --primary: #3b82f6;       
+  --secondary: #6366f1;    
+  --accent: #3b82f6;
+
+  --cyan: #3b82f6;          
+  --violet: #6366f1;
+  --lime: #84cc16;
+
   --surface: #0a0a0f;
   --surface-highlight: #1e1e24;
-  --foreground-dim: #94a3b8; /* Slate 400 */
+
+  --foreground-dim: #94a3b8;
+
+  /* RGB for shadows */
+  --primary-rgb: 59, 130, 246;
+  --cyan-glow: rgba(59, 130, 246, 0.5);
 }
 
-/* Utilities */
+/* ----------------------------------
+   UTILITIES
+---------------------------------- */
 @layer utilities {
+
+  /* Grid Pattern */
   .bg-grid-pattern {
-    background-image: linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+    background-image:
+      linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
   }
-  
-  .text-glow-cyan {
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
-  }
-  
-  .hud-panel {
-    @apply bg-card border border-card-border backdrop-blur-sm;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05); /* Subtle inner glow */
+
+  .dark .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
   }
 
+  /* Text Glow — DARK ONLY */
+  .text-glow-cyan {
+    text-shadow: none;
+  }
+
+  .dark .text-glow-cyan {
+    text-shadow:
+      0 0 10px rgba(255, 122, 24, 0.5),
+      0 0 20px rgba(255, 122, 24, 0.3);
+  }
+
+  /* HUD Panels */
+  .hud-panel {
+    @apply bg-card border border-card-border;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .dark .hud-panel {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  /* 3D Helpers */
   .perspective-1000 {
     perspective: 1000px;
   }
-  
+
   .preserve-3d {
     transform-style: preserve-3d;
   }
 }
 
-/* Animations */
+/* ----------------------------------
+   ANIMATIONS
+---------------------------------- */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
@@ -111,17 +158,22 @@
   100% { transform: translateY(100%); }
 }
 
-/* Scrollbar */
+/* ----------------------------------
+   SCROLLBAR
+---------------------------------- */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--card-border);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--foreground-dim);
 }

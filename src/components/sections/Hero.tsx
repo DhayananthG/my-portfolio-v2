@@ -50,19 +50,20 @@ export const Hero = () => {
     <section 
       ref={containerRef} 
       id="home" 
-      className="relative w-full min-h-[calc(100vh-4rem)] flex items-center overflow-hidden bg-background pt-16"
+      className="relative w-full h-[calc(100vh-64px)] mt-[64px] flex items-center overflow-hidden bg-background"
     >
       {/* Background Grid - Clean & subtle */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none" />
 
       {/* Background Globe Layer - Dynamic & Expansive */}
-      <div className="absolute top-0 right-0 w-full h-full lg:w-[70%] z-0 pointer-events-none opacity-60 lg:opacity-100">
-           <div className="w-full h-full transform scale-150 translate-x-1/4">
+      <div className="absolute top-0 right-0 w-full h-full lg:w-[70%] z-0 pointer-events-none">
+           {/* Fade Gradients (Behind the globe) */}
+           <div className="absolute inset-y-0 left-0 w-full lg:w-1/2 bg-gradient-to-r from-background via-background/30 to-transparent z-0" />
+           <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-0" />
+           
+           <div className="w-full h-full transform scale-110 lg:scale-125 translate-x-0 lg:translate-x-1/4 relative z-10 opacity-70 lg:opacity-100">
                <Globe3D />
            </div>
-           {/* Fade Gradient to ensure text readability on left */}
-           <div className="absolute inset-y-0 left-0 w-full lg:w-1/2 bg-gradient-to-r from-background via-background/80 to-transparent" />
-           <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-background to-transparent" />
       </div>
 
       {/* Main Content Container */}
@@ -77,30 +78,26 @@ export const Hero = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            SYSTEM_ONLINE // V.4.0
+            STATUS: AVAILABLE_FOR_WORK // 2024-25
           </div>
 
           {/* Headline */}
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[0.9]">
-              <span className="block text-2xl md:text-3xl text-foreground-dim font-mono mb-4 text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">
-                ARCHITECTING
-              </span>
-              <span className="block">THE <span className="text-primary glow-text">{decodedName || portfolioData.personal.name.toUpperCase()}</span></span>
-              <span className="block text-4xl md:text-6xl text-foreground-dim mt-2">DIGITAL REALITY</span>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
+              I&apos;M <span className="text-primary glow-text">{decodedName || portfolioData.personal.name.toUpperCase()}</span>
             </h1>
-            <p className="text-xl text-foreground-dim max-w-lg leading-relaxed pt-6 border-l-2 border-primary/50 pl-6">
+            <p className="text-xl text-foreground-dim max-w-lg leading-relaxed border-l-2 border-primary/50 pl-6 py-1">
               {portfolioData.personal.title} specializing in high-performance digital systems, AI integration, and immersive web 3D.
             </p>
           </div>
 
           {/* Action Area */}
           <div className="flex flex-wrap gap-5 pt-4">
-             <button className="px-8 py-4 bg-primary text-background font-bold font-mono tracking-wider hover:bg-white transition-all flex items-center gap-2 group shadow-[0_0_20px_rgba(var(--primary-rgb),0.3)]">
-                INIT_PROJECT <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+             <button className="px-8 py-4 bg-primary text-background font-bold font-mono tracking-wider hover:bg-foreground transition-all flex items-center gap-2 group shadow-[0_0_20px_rgba(var(--primary-rgb),0.3)]">
+                START A PROJECT <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
              </button>
-             <button className="px-8 py-4 border border-card-border text-foreground font-mono hover:bg-card/50 transition-all backdrop-blur-sm">
-                VIEW_DOSSIER
+             <button className="px-8 py-4 border border-card-border text-foreground font-mono hover:bg-card transition-all backdrop-blur-sm">
+                VIEW RESUME
              </button>
           </div>
 
@@ -127,8 +124,6 @@ export const Hero = () => {
 
       </div>
       
-      {/* Footer / Scroll Link */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-card-border hero-border origin-left" />
     </section>
   );
 };

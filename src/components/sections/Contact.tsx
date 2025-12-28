@@ -43,9 +43,9 @@ export const Contact = () => {
     };
 
     return (
-        <section ref={containerRef} id="contact" className="py-24 relative overflow-hidden bg-black">
-             {/* Background Grid - Darker */}
-             <div className="absolute inset-0 bg-[linear-gradient(rgba(20,20,30,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(20,20,30,0.8)_1px,transparent_1px)] bg-[size:30px_30px] opacity-20" />
+        <section ref={containerRef} id="contact" className="py-24 relative overflow-hidden bg-background">
+             {/* Background Grid */}
+             <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
 
              <div className="max-w-4xl mx-auto px-6 relative z-10">
                 
@@ -56,10 +56,10 @@ export const Contact = () => {
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                         </span>
-                        SECURE_CHANNEL_READY
+                        AVAILABLE FOR HIRE
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
-                        INITIATE_UPLINK
+                    <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
+                        GET IN TOUCH
                     </h2>
                     <p className="text-foreground-dim font-mono text-sm max-w-lg mx-auto">
                         Send transmission to Sector 7. Encryption enabled.
@@ -67,15 +67,15 @@ export const Contact = () => {
                 </div>
 
                 {/* Main Console */}
-                <div className="contact-panel bg-surface border border-white/10 p-1 relative group">
+                <div className="contact-panel bg-card border border-card-border p-1 relative group rounded-sm shadow-xl">
                     {/* Decorative Top Bar */}
-                    <div className="bg-surface-highlight h-8 flex items-center px-4 border-b border-white/10 justify-between">
+                    <div className="bg-surface h-8 flex items-center px-4 border-b border-card-border justify-between rounded-t-[calc(var(--radius)-1px)]">
                          <div className="flex gap-2">
                             <div className="w-3 h-3 rounded-full bg-red-500/20" />
                             <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
                             <div className="w-3 h-3 rounded-full bg-green-500/20" />
                          </div>
-                         <span className="text-[10px] font-mono text-foreground-dim">TERMINAL_V3.0</span>
+                         <span className="text-[10px] font-mono text-foreground-dim">CONTACT FORM</span>
                     </div>
 
                     <div className="p-8 md:p-12 relative overflow-hidden">
@@ -85,7 +85,7 @@ export const Contact = () => {
                                 <div className="w-20 h-20 bg-lime/10 rounded-full flex items-center justify-center text-lime border border-lime/20 animate-pulse">
                                     <ShieldCheck size={40} />
                                 </div>
-                                <h3 className="text-2xl font-bold text-white">TRANSMISSION RECEIVED</h3>
+                                <h3 className="text-2xl font-bold text-foreground">TRANSMISSION RECEIVED</h3>
                                 <p className="text-foreground-dim font-mono text-sm">Our systems are processing your data. Expect a response shortly.</p>
                                 <button 
                                     onClick={() => { setStatus("idle"); gsap.to(formRef.current, { opacity: 1, pointerEvents: "auto" }); }}
@@ -98,31 +98,31 @@ export const Contact = () => {
                             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <label className="text-xs font-mono text-cyan">USER_ID</label>
+                                        <label className="text-xs font-mono text-cyan">YOUR NAME</label>
                                         <input 
                                             required 
                                             type="text" 
-                                            className="w-full bg-black/50 border border-white/10 rounded-sm p-3 text-white focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan/50 transition-all font-mono text-sm placeholder:text-gray-700" 
+                                            className="w-full bg-background/5 border border-card-border rounded-sm p-3 text-foreground focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan/50 transition-all font-mono text-sm placeholder:text-foreground-dim/30" 
                                             placeholder="ENTER NAME"
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-xs font-mono text-cyan">RETURN_ADDRESS</label>
+                                        <label className="text-xs font-mono text-cyan">YOUR EMAIL</label>
                                         <input 
                                             required 
                                             type="email" 
-                                            className="w-full bg-black/50 border border-white/10 rounded-sm p-3 text-white focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan/50 transition-all font-mono text-sm placeholder:text-gray-700" 
+                                            className="w-full bg-background/5 border border-card-border rounded-sm p-3 text-foreground focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan/50 transition-all font-mono text-sm placeholder:text-foreground-dim/30" 
                                             placeholder="ENTER EMAIL"
                                         />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-xs font-mono text-cyan">DATA_PACKET</label>
+                                    <label className="text-xs font-mono text-cyan">YOUR MESSAGE</label>
                                     <textarea 
                                         required 
                                         rows={5}
-                                        className="w-full bg-black/50 border border-white/10 rounded-sm p-3 text-white focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan/50 transition-all font-mono text-sm placeholder:text-gray-700" 
+                                        className="w-full bg-background/5 border border-card-border rounded-sm p-3 text-foreground focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan/50 transition-all font-mono text-sm placeholder:text-foreground-dim/30" 
                                         placeholder="ENTER MESSAGE CONTENT..."
                                     />
                                 </div>
@@ -133,10 +133,10 @@ export const Contact = () => {
                                     className="w-full py-4 bg-cyan/10 border border-cyan/30 text-cyan hover:bg-cyan hover:text-black font-bold tracking-widest transition-all flex items-center justify-center gap-2 group relative overflow-hidden"
                                 >
                                     {status === "sending" ? (
-                                        <span className="animate-pulse">TRANSMITTING...</span>
+                                        <span className="animate-pulse">SENDING...</span>
                                     ) : (
                                         <>
-                                            <span className="relative z-10 flex items-center gap-2">EXECUTE_SEND <Send size={16} /></span>
+                                            <span className="relative z-10 flex items-center gap-2">SEND MESSAGE <Send size={16} /></span>
                                             <div className="absolute inset-0 bg-cyan/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                         </>
                                     )}

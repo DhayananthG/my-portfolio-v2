@@ -31,12 +31,12 @@ export const Experience = () => {
                 
                 {/* Header Side */}
                 <div className="exp-header sticky top-32 h-fit">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-card/40 border border-card-border text-xs font-mono mb-6 text-foreground-dim">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-card border border-card-border text-xs font-mono mb-6 text-foreground-dim shadow-sm">
                          <span className="w-2 h-2 rounded-full bg-lime animate-pulse" />
-                         CAREER_LOGS
+                         MY JOURNEY
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                        System Runtime <br/> <span className="text-foreground-dim">History</span>
+                        Work <br/> <span className="text-foreground-dim">Experience</span>
                     </h2>
                     <p className="text-foreground-dim text-lg max-w-md leading-relaxed">
                         A chronological trace of valid execution contexts and organizational deployments.

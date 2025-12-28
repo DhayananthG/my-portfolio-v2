@@ -75,12 +75,12 @@ export const Skills = () => {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
-        <div className="skills-header mb-16 flex items-end gap-4 border-b border-white/10 pb-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
-                <span className="text-violet font-mono text-sm block mb-2">02.0 // CAPABILITIES</span>
-                TECH ARSENAL
+        <div className="skills-header mb-16 flex items-end gap-4 border-b border-card-border pb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+                <span className="text-violet font-mono text-sm block mb-2">MY SKILITIES</span>
+                PROFICIENT IN
             </h2>
-             <div className="hidden md:block flex-1 h-[1px] bg-white/10 mb-2 relative">
+             <div className="hidden md:block flex-1 h-[1px] bg-card-border mb-2 relative">
                 <div className="absolute right-0 bottom-0 w-20 h-[3px] bg-violet" />
             </div>
         </div>
@@ -93,12 +93,12 @@ export const Skills = () => {
                 return (
                     <div
                         key={skill.name}
-                        className="skill-gauge bg-surface-highlight border border-white/5 rounded-2xl p-6 flex flex-col items-center justify-center gap-6 group relative cursor-pointer"
+                        className="skill-gauge bg-surface border border-card-border rounded-2xl p-6 flex flex-col items-center justify-center gap-6 group relative cursor-pointer"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                     >
                         {/* Decorative Corner */}
-                        <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-white/10 group-hover:border-cyan transition-colors" />
+                        <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-card-border group-hover:border-cyan transition-colors" />
 
                         <div className="relative w-24 h-24 flex items-center justify-center">
                             {/* Background Track */}
@@ -106,7 +106,8 @@ export const Skills = () => {
                                 <circle 
                                     cx="48" cy="48" r={radius} 
                                     fill="none" 
-                                    stroke="rgba(255,255,255,0.05)" 
+                                    stroke="currentColor" 
+                                    className="text-card-border/50"
                                     strokeWidth="4" 
                                 />
                                 {/* Progress Arc */}
@@ -124,7 +125,7 @@ export const Skills = () => {
                             </svg>
                             
                             {/* Icon Center */}
-                            <div className="absolute inset-0 flex items-center justify-center text-white/50 group-hover:text-cyan transition-colors">
+                            <div className="absolute inset-0 flex items-center justify-center text-foreground-dim group-hover:text-cyan transition-colors">
                                 <span className="skill-icon inline-block">
                                     <skill.icon size={28} />
                                 </span>
@@ -132,7 +133,7 @@ export const Skills = () => {
                         </div>
 
                         <div className="text-center">
-                            <h3 className="font-mono font-bold text-sm text-foreground group-hover:text-white transition-colors">{skill.name}</h3>
+                            <h3 className="font-mono font-bold text-sm text-foreground group-hover:text-primary transition-colors">{skill.name}</h3>
                             <p className="text-xs text-foreground-dim mt-1 font-mono">{skill.level}% EFFICIENCY</p>
                         </div>
                     </div>

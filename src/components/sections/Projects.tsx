@@ -48,12 +48,12 @@ export const Projects = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <div className="projects-header mb-16 flex items-end gap-4 border-b border-white/10 pb-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
-                <span className="text-lime font-mono text-sm block mb-2">03.0 // EXECUTABLES</span>
-                PROJECT LOGS
+        <div className="projects-header mb-16 flex items-end gap-4 border-b border-card-border pb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+                <span className="text-lime font-mono text-sm block mb-2">EXPLORE MY</span>
+                FEATURED PROJECTS
             </h2>
-            <div className="hidden md:block flex-1 h-[1px] bg-white/10 mb-2 relative">
+            <div className="hidden md:block flex-1 h-[1px] bg-card-border mb-2 relative">
                 <div className="absolute right-0 bottom-0 w-20 h-[3px] bg-lime" />
             </div>
         </div>
@@ -62,10 +62,10 @@ export const Projects = () => {
             {portfolioData.projects.map((project, index) => (
                 <div key={project.title} className="project-entry perspective-1000">
                     <Card3D className="w-full h-full" containerClassName="h-full">
-                        <div className="h-full bg-surface border border-white/5 rounded-sm p-1 group hover:border-lime/50 transition-colors relative overflow-hidden">
+                        <div className="h-full bg-card border border-card-border rounded-sm p-1 group hover:border-lime/50 transition-colors relative overflow-hidden">
                             
                             {/* Decorative Header Bar */}
-                            <div className="h-6 bg-white/5 flex items-center justify-between px-3 border-b border-white/5">
+                            <div className="h-6 bg-surface flex items-center justify-between px-3 border-b border-card-border">
                                 <span className="text-[10px] font-mono text-foreground-dim">LOG_ID: {String(index + 1).padStart(3, '0')}</span>
                                 <div className="flex gap-1.5">
                                     <div className="w-2 h-2 rounded-full bg-red-500/20" />
@@ -82,7 +82,7 @@ export const Projects = () => {
                                     </div>
                                     <div className="flex gap-4">
                                         {project.github && (
-                                            <a href={project.github} className="text-foreground-dim hover:text-white transition-colors"><Github size={20} /></a>
+                                            <a href={project.github} className="text-foreground-dim hover:text-primary transition-colors"><Github size={20} /></a>
                                         )}
                                         {project.link && (
                                             <a href={project.link} className="text-foreground-dim hover:text-cyan transition-colors"><ExternalLink size={20} /></a>
@@ -90,20 +90,20 @@ export const Projects = () => {
                                     </div>
                                 </div>
 
-                                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-lime transition-colors mt-4">
+                                <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-lime transition-colors mt-4">
                                     {project.title}
                                 </h3>
                                 
                                 <div className="min-h-[80px] mb-6">
-                                    <p className="text-sm font-mono text-foreground-dim leading-relaxed border-l-2 border-white/10 pl-3">
+                                    <p className="text-sm font-mono text-foreground-dim leading-relaxed border-l-2 border-card-border pl-3">
                                         <span className="text-lime opacity-50 block text-[10px] mb-1">DESCRIPTION //</span>
                                         {project.description}
                                     </p>
                                 </div>
 
-                                <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-white/5 border-dashed">
+                                <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-card-border border-dashed">
                                     {project.tech.map(t => (
-                                        <span key={t} className="text-[10px] font-mono px-2 py-1 rounded bg-white/5 text-cyan border border-white/5 hover:border-cyan/30 transition-colors">
+                                        <span key={t} className="text-[10px] font-mono px-2 py-1 rounded bg-surface text-cyan border border-card-border hover:border-cyan/30 transition-colors">
                                             {t}
                                         </span>
                                     ))}

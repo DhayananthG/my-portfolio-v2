@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Stars, Trail } from "@react-three/drei";
 import * as THREE from "three";
@@ -116,11 +116,18 @@ function FloatingRings({ color }: { color: string }) {
 
 export default function Globe3D() {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <div className="w-full h-full" />;
   
-  // Decide colors based on theme (defaults to dark if loading)
+  // Decide colors based on theme
   const colors = theme === 'light' 
-    ? { primary: '#2563eb', secondary: '#7c3aed', background: '#f8fafc' } // Blue/Purple for Light
-    : { primary: '#00f0ff', secondary: '#bc13fe', background: '#05060a' }; // Cyan/Violet for Dark
+    ? { primary: '#5F4B8B', secondary: '#7a6aa6', background: '#fcfbfe' } // Matching brand
+    : { primary: '#3b82f6', secondary: '#6366f1', background: '#05060a' }; // Matching brand
 
   return (
     <div className="w-full h-full relative">
@@ -135,7 +142,9 @@ export default function Globe3D() {
             <FloatingRings color={colors.primary} />
             
             {/* Background elements */}
-            <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
+            {theme === 'dark' && (
+                <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
+            )}
         </Canvas>
     </div>
   );
